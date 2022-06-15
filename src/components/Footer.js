@@ -9,7 +9,7 @@ export default class Footer extends Component {
                         <div className="footer-inner">
                             <div className="row d-flex align-items-center gy-4">
                                 <div className="col-md-4">
-                                    <span className="copyright">© 2021 Katen. Template by ThemeGer.</span>
+                                    <span className="copyright">© 2022 Blog. Created by 4ydogan.</span>
                                 </div>
 
                                 <div className="col-md-4 text-center">
