@@ -3,10 +3,13 @@ import Post from './Post';
 
 export default class Posts extends Component {
 	render() {
+
+		const dynamicPosts = <Post id="1"/>;
+
 		return (
 			<>
 				<div class="row gy-4">
-					<Post />
+					{dynamicPosts}
 
 					<div class="col-sm-6">
 						<div class="post post-grid rounded bordered">

@@ -9,11 +9,11 @@ export default class Blog extends Component {
                 <section class="page-header">
                     <div class="container-xl">
                         <div class="text-center">
-                            <h1 class="mt-0 mb-2">Lifestyle</h1>
+                            <h1 class="mt-0 mb-2">Blog</h1>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center mb-0">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Lifestyle</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
                                 </ol>
                             </nav>
                         </div>
