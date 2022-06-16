@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PopularPosts from './Home/PopularPosts';
+
 
 export default class Widget extends Component {
     render() {
         return (
             <>
                 <div class="sidebar">
+                    <PopularPosts />
+
+                    <br />
+
                     <div class="widget rounded">
                         <div class="widget-header text-center">
                             <h3 class="widget-title">Explore Topics</h3>

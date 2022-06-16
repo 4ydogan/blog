@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FeaturePosts from './Home/FeaturePosts';
 import Trending from './Home/Trending';
-import WidgetPosts from './Widget/WidgetPosts';
+import PopularPosts from './Home/PopularPosts';
 import LatestPosts from './Home/LatestPosts';
 import Widget from './Widget';
 
@@ -13,7 +13,9 @@ class HomePage extends Component {
                     <div className="container-xl">
                         <div className="row gy-4">
                             <FeaturePosts />
-                            <WidgetPosts />
+                            <div className="col-lg-4">
+                                <PopularPosts />
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -24,7 +26,7 @@ class HomePage extends Component {
 
                                 <Trending />
 
-                                <div className="spacer" data-height="50"></div>
+                                <br />
 
                                 <div className="ads-horizontal text-md-center">
                                     <span className="ads-title">- Sponsored Ad -</span>
@@ -33,13 +35,9 @@ class HomePage extends Component {
                                     </a>
                                 </div>
 
-                                <div className="spacer" data-height="50">
-                                    <br/>
-                                </div>
-                                
+                                <br />
+
                                 <LatestPosts />
-                                
-                                <div className="spacer" data-height="50"></div>
 
                             </div>
                             <div className="col-lg-4">

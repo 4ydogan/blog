@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import HomePage from "./components/HomePage";
 import Blog from "./components/Blog/Blog";
 import Footer from './components/Footer';
+import Post from './components/Blog/Post';
 
 class App extends PureComponent {
   _redirectToHome() {
@@ -24,7 +25,8 @@ class App extends PureComponent {
           <NavBar />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route path="/posts/:id" component={<Blog />} />
+            <Route exact path="/blog" element={<Blog />} />
+            <Route path="/posts/:id" component={<Post />} />
 
             <Route render={this._redirectToHome} />
           </Routes>
