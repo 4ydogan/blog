@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import FeaturePosts from './Home/FeaturePosts';
 import Trending from './Home/Trending';
-import WidgetPosts from './Home/WidgetPosts';
+import WidgetPosts from './Widget/WidgetPosts';
 import LatestPosts from './Home/LatestPosts';
-import Widget from './Home/Widget';
+import Widget from './Widget';
 
 class HomePage extends Component {
     render() {

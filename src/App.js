@@ -8,7 +8,7 @@ import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from "./components/HomePage";
-import Post from "./components/Post";
+import Blog from "./components/Blog/Blog";
 import Footer from './components/Footer';
 
 class App extends PureComponent {
@@ -24,7 +24,7 @@ class App extends PureComponent {
           <NavBar />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route path="/posts/:id" component={<Post />} />
+            <Route path="/posts/:id" component={<Blog />} />
 
             <Route render={this._redirectToHome} />
           </Routes>
