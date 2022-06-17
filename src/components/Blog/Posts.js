@@ -10,9 +10,8 @@ class Posts extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const response = await fetch(`/blogpost/1`);
-		const data = await response.json();
-		this.setState({ content: data });
+		const response = await axios.get(`/blogpost/1`);
+		this.setState({ content: response.data });
 		this.setState({ loading: false });
 	}
 
