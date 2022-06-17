@@ -9,7 +9,7 @@ class Posts extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const response = await axios.get(`/blogpost/all`);
+		const response = await axios.get(`/post/all`);
 		this.setState({ posts: response.data });
 		this.setState({ loading: false });
 	}

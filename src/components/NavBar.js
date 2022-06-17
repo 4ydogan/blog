@@ -5,7 +5,7 @@ export default () => {
 		<header className="header-default">
 			<nav className="navbar navbar-expand-lg">
 				<div className="container-xl">
-					<a className="navbar-brand" href="index.html"><img src="images/logo.svg" alt="logo" /></a>
+					<a className="navbar-brand" href="index.html"><img src="public/logo.png" alt="logo" /></a>
 
 					<div className="collapse navbar-collapse">
 						<ul className="navbar-nav mr-auto">
