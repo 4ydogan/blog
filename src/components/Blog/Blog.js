@@ -6,39 +6,39 @@ export default class Blog extends Component {
     render() {
         return (
             <>
-                <section class="page-header">
-                    <div class="container-xl">
-                        <div class="text-center">
-                            <h1 class="mt-0 mb-2">Blog</h1>
+                <section className="page-header">
+                    <div className="container-xl">
+                        <div className="text-center">
+                            <h1 className="mt-0 mb-2">Blog</h1>
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center mb-0">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                <ol className="breadcrumb justify-content-center mb-0">
+                                    <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li className="breadcrumb-item active" aria-current="page">Blog</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </section>
 
-                <section class="main-content">
-                    <div class="container-xl">
+                <section className="main-content">
+                    <div className="container-xl">
 
-                        <div class="row gy-4">
+                        <div className="row gy-4">
 
-                            <div class="col-lg-8">
+                            <div className="col-lg-8">
                                 <Posts />
                                 <nav>
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item active" aria-current="page">
-                                            <span class="page-link">1</span>
+                                    <ul className="pagination justify-content-center">
+                                        <li className="page-item active" aria-current="page">
+                                            <span className="page-link">1</span>
                                         </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
                                     </ul>
                                 </nav>
 
                             </div>
-                            <div class="col-lg-4">
+                            <div className="col-lg-4">
 
                                 <Widget />
 
