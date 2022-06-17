@@ -2,12 +2,10 @@ import agent from '../../api/agent';
 import React, { Component, useEffect, useState } from 'react';
 import Post from './Post';
 import axios from 'axios';
-import base_url from '../../global';
 
 class Posts extends Component {
 
 	state = {};
-
 
 	async componentDidMount() {
 		this.setState({ loading: true });
