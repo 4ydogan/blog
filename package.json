@@ -20,6 +20,7 @@
     "web-vitals": "^2.1.4",
     "webpack": "^5.73.0"
   },
+  "proxy": "https://blog-backend-7.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
