@@ -1180,6 +1180,8 @@ section {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  height: 244.88px;
+  width: 367px;
 }
 .post .thumb:hover img {
   -webkit-transform: scale(1.07);

@@ -4,37 +4,44 @@ import './assets/css/style.scss';
 import './assets/css/simple-line-icons.css';
 import './assets/css/all.min.css';
 
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import HomePage from "./components/HomePage";
 import Blog from "./components/Blog/Blog";
 import Footer from './components/Footer';
 import SinglePost from './components/Blog/SinglePost';
+import CanvasMenu from './components/CanvasMenu';
+import SearchPopUp from './components/SearchPopUp';
 
-class App extends PureComponent {
-  _redirectToHome() {
+const App = () => {
+
+  const _redirectToHome = ()  => {
     return <Navigate to="/" />;
   }
 
-  render() {
 
-    return (
-      <Router>
-        <div className="site-wrapper">
-          <NavBar />
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/blog" element={<Blog />} />
-            <Route path="/posts/:id" element={<SinglePost />} />
+  const [canvas, setCanvas] = useState(false);
+  const [search, setSearch] = useState(false);
 
-            <Route render={this._redirectToHome} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router >
-    );
-  }
+  return (
+    <Router>
+      <div className="site-wrapper">
+        <NavBar setCanvas={setCanvas} setSearch={setSearch} />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/blog" element={<Blog />} />
+          <Route path="/posts/:id" element={<SinglePost />} />
+          <Route path="*" element={<div> Sayfa Bulunamadı </div>} />
+
+          <Route render={_redirectToHome} />
+        </Routes>
+        <Footer />
+      </div>
+      <CanvasMenu  isCanvasOpen={canvas} setCanvas={setCanvas} />
+      <SearchPopUp  isSearchOpen={search} setSearch={setSearch} />
+    </Router >
+  );
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = () => {
+const NavBar = (props) => {
 
 	return (
 		<>
@@ -18,10 +18,10 @@ const NavBar = () => {
 									<a className="nav-link" href="/blog">Blog</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="/authors">Authors</a>
+									<a className="nav-link" href="/categories">Categories</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="/contact">Contact</a>
+									<a className="nav-link" href="/authors">Authors</a>
 								</li>
 							</ul>
 						</div>
@@ -36,10 +36,10 @@ const NavBar = () => {
 								<li className="list-inline-item"><a href="#"><i className="fab fa-youtube"></i></a></li>
 							</ul>
 							<div className="header-buttons">
-								<button className="search icon-button">
+								<button className="search icon-button" onClick={() => props.setSearch(true)}>
 									<i className="icon-magnifier"></i>
 								</button>
-								<button className="burger-menu icon-button">
+								<button className="burger-menu icon-button" onClick={() => props.setCanvas(true)}>
 									<span className="burger-icon"></span>
 								</button>
 							</div>

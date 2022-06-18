@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component, useState } from 'react'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import PreLoader from '../PreLoader';
 
 const WidgetPosts = () => {
 
@@ -74,7 +75,7 @@ const WidgetPosts = () => {
                     ariaSelected: "false",
                     className: "nav-link",
                     contentClassName: "tab-pane"
-                    
+
                 },
                 recent: {
                     ariaSelected: "true",

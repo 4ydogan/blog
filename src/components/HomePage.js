@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FeaturePosts from './Home/FeaturePosts';
 import Trending from './Home/Trending';
-import PopularPosts from './Home/PopularPosts';
+import PopularPosts from './Widget/PopularPosts';
 import LatestPosts from './Home/LatestPosts';
 import Widget from './Widget';
 
