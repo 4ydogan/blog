@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { Component, useState } from 'react'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
-import PreLoader from '../PreLoader';
 
 const WidgetPosts = () => {
 
