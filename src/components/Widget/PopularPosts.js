@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component, useState } from 'react'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
-const WidgetPosts = () => {
+const PopularPosts = () => {
 
     const [contents, setContents] = useState();
 
@@ -106,4 +106,4 @@ const WidgetPosts = () => {
     )
 }
 
-export default WidgetPosts;
+export default PopularPosts;

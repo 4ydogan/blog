@@ -7,14 +7,13 @@ export default class Blog extends Component {
     render() {
         return (
             <>
-                <Header title={"Blog"} />
+                <Header title={"Categories"} />
 
                 <section className="main-content">
                     <div className="container-xl">
-
                         <div className="row gy-4">
-
                             <div className="col-lg-8">
+
                                 <Posts />
                                 <nav>
                                     <ul className="pagination justify-content-center">
@@ -26,15 +25,12 @@ export default class Blog extends Component {
                                     </ul>
                                 </nav>
 
+
                             </div>
                             <div className="col-lg-4">
-
                                 <Widget />
-
                             </div>
-
                         </div>
-
                     </div>
                 </section>
             </>
