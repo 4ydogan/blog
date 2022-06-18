@@ -1,6 +1,6 @@
 import React from 'react'
 
-const preLoader = (loading) => {
+const PreLoader = (loading) => {
     return (
         loading ?
             <div id="preloader">
@@ -36,4 +36,4 @@ const preLoader = (loading) => {
     )
 }
 
-export default preLoader;
+export default PreLoader;
