@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class FeaturePosts extends Component {
     render() {
         return (
-            <div className="col-lg-8">
 
                 <div className="post featured-post-lg">
                     <div className="details clearfix">
@@ -21,7 +20,6 @@ export default class FeaturePosts extends Component {
                     </a>
                 </div>
 
-            </div>
         )
     }
 }

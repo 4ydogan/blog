@@ -9,21 +9,13 @@ class HomePage extends Component {
     render() {
         return (
             <>
-                <section id="hero">
-                    <div className="container-xl">
-                        <div className="row gy-4">
-                            <FeaturePosts />
-                            <div className="col-lg-4">
-                                <PopularPosts />
-                            </div>
-                        </div>
-                    </div>
-                </section>
                 <section className="main-content">
                     <div className="container-xl">
                         <div className="row gy-4">
                             <div className="col-lg-8">
+                                <FeaturePosts />
 
+                                <br />
                                 <Trending />
 
                                 <br />

@@ -1,179 +1,109 @@
-import React, { Component } from 'react'
+import axios from 'axios';
+import React, { Component, useState } from 'react'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
-export default class WidgetPosts extends Component {
+const WidgetPosts = () => {
 
-    popularPost = (post) => {
+    const [contents, setContents] = useState();
+
+    const post = (post) => {
         return (
             <div className="post post-list-sm circle">
                 <div className="thumb circle">
                     <Navigate to={`/posts/${post.id}`}>
                         <div className="inner">
-                            <img src={post.img} alt="post-title" />
+                            <img src={post.img} alt={post.title} />
                         </div>
                     </Navigate>
                 </div>
                 <div className="details clearfix">
-                    <h6 className="post-title my-0"><a href={`/posts/${post.id}`}>{post.head}</a></h6>
+                    <h6 className="post-title my-0"><a href={`/posts/${post.id}`}>{post.title}</a></h6>
                     <ul className="meta list-inline mt-1 mb-0">
-                        <li className="list-inline-item">{post.publishDate}</li>
+                        <li className="list-inline-item">{post.date}</li>
                     </ul>
                 </div>
             </div>
         )
     }
 
-    render() {
-        return (
+    const posts = (type) => {
+
+        axios.get(`/posts/${type}`).then(response => {
+            setContents(response.data)
+        })
+
+        let posts = contents?.map(content => {
+            return post(content);
+        });
+
+        return posts;
+
+    }
+
+    const [optionsSelect, setOptionSelect] = useState({
+        popular: {
+            ariaSelected: "true",
+            className: "nav-link active",
+            contentClassName: "tab-pane fade show active"
+        },
+        recent: {
+            ariaSelected: "false",
+            className: "nav-link",
+            contentClassName: "tab-pane fade"
+        }
+    });
+
+    const handleClick = (title) => {
+        if (title === "popular") {
+            setOptionSelect({
+                popular: {
+                    ariaSelected: "true",
+                    className: "nav-link active",
+                    contentClassName: "tab-pane fade show active"
+                },
+                recent: {
+                    ariaSelected: "false",
+                    className: "nav-link",
+                    contentClassName: "tab-pane fade"
+                }
+            });
+        }
+        else {
+            setOptionSelect({
+                popular: {
+                    ariaSelected: "false",
+                    className: "nav-link",
+                    contentClassName: "tab-pane"
+                    
+                },
+                recent: {
+                    ariaSelected: "true",
+                    className: "nav-link active",
+                    contentClassName: "tab-pane fade show active"
+                }
+            });
+        }
+    }
+
+    return (
+        <>
             <div className="post-tabs rounded bordered">
                 <ul className="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
-                    <li className="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" className="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
-                    <li className="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" className="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
+                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("popular")} aria-controls="popular" aria-selected={optionsSelect.popular} className={optionsSelect.popular.className} data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
+                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("recent")} aria-controls="recent" aria-selected={optionsSelect.recent} className={optionsSelect.recent.className} data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
                 </ul>
                 <div className="tab-content" id="postsTabContent">
                     <div className="lds-dual-ring"></div>
-                    <div aria-labelledby="popular-tab" className="tab-pane fade show active" id="popular" role="tabpanel">
-
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="posts/5">An Incredibly Easy Method That Works For All</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="posts/5">An Incredibly Easy Method That Works For All</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div aria-labelledby="popular-tab" className={optionsSelect.popular.contentClassName} id="popular" role="tabpanel">
+                        {contents ? posts("popular") : null}
                     </div>
-                    <div aria-labelledby="recent-tab" className="tab-pane fade" id="recent" role="tabpanel">
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="post post-list-sm circle">
-                            <div className="thumb circle">
-                                <a href="blog-single.html">
-                                    <div className="inner">
-                                        <img src="https://katen-template.netlify.app/html/images/posts/tabs-2.jpg" alt="post-title" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="details clearfix">
-                                <h6 className="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-                                <ul className="meta list-inline mt-1 mb-0">
-                                    <li className="list-inline-item">29 March 2021</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div aria-labelledby="recent-tab" className={optionsSelect.recent.contentClassName} id="recent" role="tabpanel">
+                        {contents ? posts("recent") : null}
                     </div>
                 </div>
             </div>
-        )
-    }
+        </>
+    )
 }
+
+export default WidgetPosts;
