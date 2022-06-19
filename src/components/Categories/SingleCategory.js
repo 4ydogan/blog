@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Widget from '../Widget';
 
-const SinglePost = () => {
+const SingleCategory = () => {
 
     const [state, setState] = useState();
 
@@ -193,4 +193,4 @@ const SinglePost = () => {
     )
 }
 
-export default SinglePost;
+export default SingleCategory;

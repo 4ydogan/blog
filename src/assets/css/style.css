@@ -2224,7 +2224,7 @@ footer .footer-inner .copyright {
   display: block;
 }
 
-.ads-title {
+.my-advertisement-title {
   color: #C0C0C0;
   font-family: "Poppins", sans-serif;
   font-size: 12px;
@@ -2232,6 +2232,18 @@ footer .footer-inner .copyright {
   margin-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
+}
+
+
+.my-horizontal-advertisement-img {
+  border-radius: 15px;
+  height: 126px;
+  width: 736px;
+}
+
+.my-vertical-advertisement-img {
+  border-radius: 15px;
+  height: 236px;
 }
 
 ::selection {

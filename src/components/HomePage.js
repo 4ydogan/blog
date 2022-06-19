@@ -19,10 +19,10 @@ class HomePage extends Component {
 
                                 <br />
 
-                                <div className="ads-horizontal text-md-center">
-                                    <span className="ads-title">- Sponsored Ad -</span>
+                                <div className="text-md-center">
+                                    <span className="my-advertisement-title">- Sponsored Ad -</span>
                                     <a href="#">
-                                        <img src="images/ads/ad-750.png" alt="Advertisement" />
+                                        <img  className="my-horizontal-advertisement-img" src="https://i.hizliresim.com/ouxsrxy.jpg" alt="Advertisement" />
                                     </a>
                                 </div>
 

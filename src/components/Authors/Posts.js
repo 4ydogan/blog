@@ -1,4 +1,3 @@
-import agent from '../../api/agent';
 import React, { Component, useEffect, useState } from 'react';
 import Post from './Post';
 import axios from 'axios';
@@ -16,7 +15,9 @@ class Posts extends Component {
 
 	allPosts() {
 		let posts = this.state.posts?.map(content => {
-			return <Post key={content.id} content={content} />
+			if (content.author === this.props.authorID) {
+				return <Post key={content.id} content={content} />
+			}
 		});
 
 		return posts;

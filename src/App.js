@@ -9,12 +9,14 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 import NavBar from './components/NavBar';
 import HomePage from "./components/HomePage";
 import Blog from "./components/Blog/Blog";
-import Categories from "./components/Categories/Categories";
 import Authors from "./components/Authors/Authors";
 import Footer from './components/Footer';
 import SinglePost from './components/Blog/SinglePost';
+import SingleCategory from './components/Categories/SingleCategory';
+import SingleAuthor from './components/Authors/SingleAuthor';
 import CanvasMenu from './components/CanvasMenu';
 import SearchPopUp from './components/SearchPopUp';
+import CategoriesPage from './components/Categories/CategoriesPage';
 
 const App = () => {
 
@@ -33,9 +35,11 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/categories" element={<Categories />} />
+          <Route exact path="/categories" element={<CategoriesPage />} />
           <Route exact path="/authors" element={<Authors />} />
           <Route path="/posts/:id" element={<SinglePost />} />
+          <Route path="/categories/:id" element={<SingleCategory />} />
+          <Route path="/authors/:id" element={<SingleAuthor />} />
           <Route path="*" element={<div> Sayfa Bulunamadı </div>} />
 
           <Route render={_redirectToHome} />

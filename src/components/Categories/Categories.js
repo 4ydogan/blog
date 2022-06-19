@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
-import Header from '../Header'
-import Widget from '../Widget'
-import Posts from './Posts'
+import React, { Component, useEffect, useState } from 'react';
+import axios from 'axios';
+import Category from './Category';
 
-export default class Categories extends Component {
-    render() {
-        return (
-            <>
-                <Header title={"Categories"} />
+class Categories extends Component {
 
-                <section className="main-content">
-                    <div className="container-xl">
-                        <div className="row gy-4">
-                            <div className="col-lg-8">
+	state = {};
 
-                                <Posts />
-                                <nav>
-                                    <ul className="pagination justify-content-center">
-                                        <li className="page-item active" aria-current="page">
-                                            <span className="page-link">1</span>
-                                        </li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                    </ul>
-                                </nav>
+	async componentDidMount() {
+		this.setState({ loading: true });
+		const response = await axios.get(`/categories/all`);
+		this.setState({ posts: response.data });
+		this.setState({ loading: false });
+	}
 
+	allPosts() {
+		let posts = this.state.posts?.map(content => {
+			return <Category key={content.id} content={content} />
+		});
 
-                            </div>
-                            <div className="col-lg-4">
-                                <Widget />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </>
-        )
-    }
+		return posts;
+	}
+
+	render() {
+
+		return (
+			<>
+				{this.state.loading ? null :
+					<div className="row gy-4">
+						{this.allPosts()}
+					</div>
+				}
+			</>
+		)
+
+	}
 }
+
+export default Categories;
