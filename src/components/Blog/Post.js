@@ -13,7 +13,7 @@ class Post extends Component {
         {postContent ? <div className="col-sm-6">
           <div className="post post-grid rounded bordered">
             <div className="thumb top-rounded">
-              <a href={`/category/${postContent.category}`} className="category-badge position-absolute">{postContent.category}</a>
+              <a href={`/categories/${postContent.category}`} className="category-badge position-absolute">{postContent.category}</a>
               <a href={`/posts/${postContent.id}`}>
                 <div className="inner">
                   <img src={postContent.images} alt="post-title" />

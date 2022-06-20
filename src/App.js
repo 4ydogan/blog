@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 import NavBar from './components/NavBar';
 import HomePage from "./components/HomePage";
 import Blog from "./components/Blog/Blog";
-import Authors from "./components/Authors/Authors";
+import AuthorsPage from "./components/Authors/AuthorsPage";
 import Footer from './components/Footer';
 import SinglePost from './components/Blog/SinglePost';
 import SingleCategory from './components/Categories/SingleCategory';
@@ -36,7 +36,7 @@ const App = () => {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/categories" element={<CategoriesPage />} />
-          <Route exact path="/authors" element={<Authors />} />
+          <Route exact path="/authors" element={<AuthorsPage />} />
           <Route path="/posts/:id" element={<SinglePost />} />
           <Route path="/categories/:id" element={<SingleCategory />} />
           <Route path="/authors/:id" element={<SingleAuthor />} />

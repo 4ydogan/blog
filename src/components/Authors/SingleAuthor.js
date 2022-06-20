@@ -13,7 +13,7 @@ const SingleAuthor = () => {
 
     useEffect(() => {
         setState({ loading: true });
-        axios.get(`/author/${id}`).then(response => {
+        axios.get(`/authors/${id}`).then(response => {
             setState({ author: response.data })
         })
         setState({ loading: false });
@@ -28,7 +28,7 @@ const SingleAuthor = () => {
 
     return (state?.author === undefined ? null :
         <>
-            <Header title={state.author.name} />
+            <Header title={state.author.author.name} />
 
             <section className="main-content">
                 <div className="container-xl">
@@ -36,7 +36,7 @@ const SingleAuthor = () => {
                     <div className="row gy-4">
 
                         <div className="col-lg-8">
-                            <Posts authorID={state.author.id} />
+                            <Posts posts={state.author.posts} />
                             <nav>
                                 <ul className="pagination justify-content-center">
                                     <li className="page-item active" aria-current="page">

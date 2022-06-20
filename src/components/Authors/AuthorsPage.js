@@ -7,13 +7,14 @@ export default class AuhtorsPage extends Component {
     render() {
         return (
             <>
-                <Header title={"Auhtors"} />
+                <Header title={"Authors"} />
 
                 <section className="main-content">
                     <div className="container-xl">
-                        <div className="row gy-4">
-                            <div className="col-lg-8">
 
+                        <div className="row gy-4">
+
+                            <div className="col-lg-8">
                                 <Auhtors />
                                 <nav>
                                     <ul className="pagination justify-content-center">
@@ -25,12 +26,15 @@ export default class AuhtorsPage extends Component {
                                     </ul>
                                 </nav>
 
-
                             </div>
                             <div className="col-lg-4">
+
                                 <Widget />
+
                             </div>
+
                         </div>
+
                     </div>
                 </section>
             </>

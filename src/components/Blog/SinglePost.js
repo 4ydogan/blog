@@ -12,7 +12,7 @@ const SinglePost = () => {
     useEffect(() => {
         setState({ loading: true });
         axios.get(`/post/${id}`).then(response => {
-            axios.get(`/author/${response.data.author}`).then(author => setState({ post: response.data, author: author.data }))
+            axios.get(`/authors/${response.data.author}`).then(author => setState({ post: response.data, author: author.data.author }))
         })
         setState({ loading: false });
     }, [id])
@@ -32,8 +32,8 @@ const SinglePost = () => {
                     <div className="post-header">
                         <h1 className="title mt-0 mb-3">{state.post.title}</h1>
                         <ul className="meta list-inline mb-0">
-                            <li className="list-inline-item"><a href={`/author/${state.author.id}`}><img src={state.author.images} className="author" alt={state.author.name} />{state.author.name}</a></li>
-                            <li className="list-inline-item"><a href={`/category/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="list-inline-item"><a href={`/authors/${state.author.id}`}><img src={state.author.images} className="author" alt={state.author.name} />{state.author.name}</a></li>
+                            <li className="list-inline-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
                             <li className="list-inline-item">{state.post.date}</li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@ const SinglePost = () => {
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item"><a href={`/category/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="breadcrumb-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{state.post.title}</li>
                         </ol>
                     </nav>
@@ -81,7 +81,7 @@ const SinglePost = () => {
                                     <img src={state.author.images} alt={state.author.name} />
                                 </div>
                                 <div className="details">
-                                    <h4 className="name"><a href={`/author/${state.author.id}`}>{state.author.name}</a></h4>
+                                    <h4 className="name"><a href={`/authors/${state.author.id}`}>{state.author.name}</a></h4>
                                     <p>Hello, I’m a content writer who is fascinated by content fashion, celebrity and lifestyle. She helps clients bring the right content to the right people.</p>
                                     <ul className="social-icons list-unstyled list-inline mb-0">
                                         <li className="list-inline-item"><a href="#"><i className="fab fa-facebook-f"></i></a></li>

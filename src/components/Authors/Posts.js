@@ -6,18 +6,9 @@ class Posts extends Component {
 
 	state = {};
 
-	async componentDidMount() {
-		this.setState({ loading: true });
-		const response = await axios.get(`/post/all`);
-		this.setState({ posts: response.data });
-		this.setState({ loading: false });
-	}
-
 	allPosts() {
-		let posts = this.state.posts?.map(content => {
-			if (content.author === this.props.authorID) {
-				return <Post key={content.id} content={content} />
-			}
+		let posts = this.props.posts?.map(content => {
+			return <Post key={content.id} content={content} />
 		});
 
 		return posts;

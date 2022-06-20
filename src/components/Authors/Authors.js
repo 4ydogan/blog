@@ -9,12 +9,12 @@ class Authors extends Component {
 	async componentDidMount() {
 		this.setState({ loading: true });
 		const response = await axios.get(`/authors/all`);
-		this.setState({ posts: response.data });
+		this.setState({ authors: response.data });
 		this.setState({ loading: false });
 	}
 
 	allAuthors() {
-		let posts = this.state.posts?.map(content => {
+		let posts = this.state.authors?.map(content => {
 			return <Author key={content.id} content={content} />
 		});
 

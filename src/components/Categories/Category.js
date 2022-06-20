@@ -13,9 +13,9 @@ class Category extends Component {
           <div className="col-sm-6">
             <div className="post featured-post-md">
               <div className="details clearfix">
-                <h4 className="post-title"><a href={`/categories/${categoryContent.title}`}>{categoryContent.title}</a></h4>
+                <h4 className="post-title"><a href={`/categories/${categoryContent.name}`}>{categoryContent.name}</a></h4>
               </div>
-              <a href={`/categories/${categoryContent.title}`}>
+              <a href={`/categories/${categoryContent.name}`}>
                 <div className="thumb rounded">
                   <div className="inner data-bg-image" data-bg-image={categoryContent.image}></div>
                 </div>

@@ -11,8 +11,8 @@ const SingleCategory = () => {
 
     useEffect(() => {
         setState({ loading: true });
-        axios.get(`/post/${id}`).then(response => {
-            axios.get(`/author/${response.data.author}`).then(author => setState({ post: response.data, author: author.data }))
+        axios.get(`/posts/${id}`).then(response => {
+            axios.get(`/authors/${response.data.author}`).then(author => setState({ post: response.data, author: author.data }))
         })
         setState({ loading: false });
     }, [id])
@@ -33,7 +33,7 @@ const SingleCategory = () => {
                         <h1 className="title mt-0 mb-3">{state.post.title}</h1>
                         <ul className="meta list-inline mb-0">
                             <li className="list-inline-item"><a href={`/author/${state.author.id}`}><img src={state.author.images} className="author" alt={state.author.name} />{state.author.name}</a></li>
-                            <li className="list-inline-item"><a href={`/category/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="list-inline-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
                             <li className="list-inline-item">{state.post.date}</li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@ const SingleCategory = () => {
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item"><a href={`/category/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="breadcrumb-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{state.post.title}</li>
                         </ol>
                     </nav>
