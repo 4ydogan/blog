@@ -17,12 +17,15 @@ class Category extends Component {
               </div>
               <a href={`/categories/${categoryContent.id}`}>
                 <div className="thumb rounded">
-                  <div className="inner data-bg-image" data-bg-image={categoryContent.image}></div>
+                  <div className="inner data-bg-image" data-bg-image={categoryContent.image} style={{
+                    backgroundImage: `url("${categoryContent.image}")`
+                  }}></div>
                 </div>
               </a>
             </div>
-          </div>
-          : null}
+          </div >
+          : null
+        }
       </>
     )
   }
