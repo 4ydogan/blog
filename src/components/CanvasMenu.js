@@ -13,9 +13,7 @@ const CanvasMenu = (props) => {
 
                     <nav>
                         <ul className="vertical-menu">
-                            <li className="active">
-                                <a href="/">Home</a>
-                            </li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="/blog">Blog</a></li>
                             <li><a href="/categories">Categories</a></li>
                             <li><a href="/authors">Authors</a></li>
