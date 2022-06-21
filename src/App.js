@@ -38,7 +38,7 @@ const App = () => {
           <Route exact path="/categories" element={<CategoriesPage />} />
           <Route exact path="/authors" element={<AuthorsPage />} />
           <Route path="/posts/:id" element={<SinglePost />} />
-          <Route path="/categories/:id" element={<SingleCategory />} />
+          <Route path="/categories/:category_name" element={<SingleCategory />} />
           <Route path="/authors/:id" element={<SingleAuthor />} />
           <Route path="*" element={<div> Sayfa Bulunamadı </div>} />
 

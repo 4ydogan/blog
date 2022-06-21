@@ -1,27 +1,43 @@
-import React, { useEffect } from 'react'
+import axios from 'axios';
+import React, { Component, useEffect } from 'react'
 
-const Topics = () => {
-    return (
-        <>
-            <div className="widget rounded">
-                <div className="widget-header text-center">
-                    <h3 className="widget-title">Explore Topics</h3>
-                    <img src="images/wave.svg" className="wave" alt="wave" />
-                </div>
-                <div className="widget-content">
-                    <ul className="list">
-                        <li><a href="#">Lifestyle</a><span>(5)</span></li>
-                        <li><a href="#">Inspiration</a><span>(2)</span></li>
-                        <li><a href="#">Fashion</a><span>(4)</span></li>
-                        <li><a href="#">Politic</a><span>(1)</span></li>
-                        <li><a href="#">Trending</a><span>(7)</span></li>
-                        <li><a href="#">Culture</a><span>(3)</span></li>
-                    </ul>
-                </div>
+class Topics extends Component {
 
-            </div>
-        </>
-    )
+    state = {};
+
+	async componentDidMount() {
+		this.setState({ loading: true });
+		const response = await axios.get(`/categories/all`);
+		this.setState({ categories: response.data});
+		this.setState({ loading: false });
+	}
+
+	allTopics() {
+		let posts = this.state.categories?.map(content => {
+			return <li key={content.id}><a href={`/categories/${content.name}`}>{content.name}</a><span></span></li>
+		});
+
+		return posts;
+	}
+
+    render() {
+        return (
+            <>
+                <div className="widget rounded">
+                    <div className="widget-header text-center">
+                        <h3 className="widget-title">Explore Topics</h3>
+                        <img src="images/wave.svg" className="wave" alt="wave" />
+                    </div>
+                    <div className="widget-content">
+                        <ul className="list">
+                            {this.allTopics()}
+                        </ul>
+                    </div>
+
+                </div>
+            </>
+        )
+    }
 }
 
 export default Topics;

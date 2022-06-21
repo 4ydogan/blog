@@ -9,12 +9,12 @@ class Categories extends Component {
 	async componentDidMount() {
 		this.setState({ loading: true });
 		const response = await axios.get(`/categories/all`);
-		this.setState({ posts: response.data });
+		this.setState({ categories: response.data });
 		this.setState({ loading: false });
 	}
 
 	allPosts() {
-		let posts = this.state.posts?.map(content => {
+		let posts = this.state.categories?.map(content => {
 			return <Category key={content.id} content={content} />
 		});
 
