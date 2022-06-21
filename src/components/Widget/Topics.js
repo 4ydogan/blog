@@ -14,7 +14,7 @@ class Topics extends Component {
 
 	allTopics() {
 		let posts = this.state.categories?.map(content => {
-			return <li key={content.id}><a href={`/categories/${content.name}`}>{content.name}</a><span></span></li>
+			return <li key={content.id}><a href={`/categories/${content.id}`}>{content.name}</a><span></span></li>
 		});
 
 		return posts;

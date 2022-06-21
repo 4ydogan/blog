@@ -1,6 +1,12 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 
 const Newsletter = () => {
+
+    const subscribe = async (email) => {
+        axios.post(`/newsletter`, [email]);
+    }
+
     return (
         <>
             <div className="widget rounded">
@@ -14,7 +20,7 @@ const Newsletter = () => {
                         <div className="mb-2">
                             <input className="form-control w-100 text-center" placeholder="Email address…" type="email" />
                         </div>
-                        <button className="btn btn-default btn-full" type="submit">Sign Up</button>
+                        <button onClick={e => subscribe(e.value)} className="btn btn-default btn-full" type="submit">Sign Up</button>
                     </form>
                     <span className="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
                 </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Posts from '../Authors/Posts';
+import Posts from './Posts';
 import Header from '../Header';
 import Widget from '../Widget';
 
@@ -9,15 +9,16 @@ const SingleCategory = () => {
 
     const [state, setState] = useState();
 
-    const { category_name } = useParams();
+    const { category_id } = useParams();
 
     useEffect(() => {
         setState({ loading: true });
-        axios.get(`/categories/${category_name}`).then(response => {
-            setState({ category: response.data.category, posts: response.data.posts})
+        axios.get(`/categories/${category_id}`).then(response => {
+            axios.get(`/authors/all`)
+                .then(authors => setState({ category: response.data.category, posts: response.data.posts , authors: authors.data}))
         })
         setState({ loading: false });
-    }, [category_name])
+    }, [category_id])
 
 
     const tags = () => {
@@ -36,7 +37,7 @@ const SingleCategory = () => {
                     <div className="row gy-4">
 
                         <div className="col-lg-8">
-                            <Posts posts={state.posts} />
+                            <Posts posts={state.posts} authors={state.authors} />
                             <nav>
                                 <ul className="pagination justify-content-center">
                                     <li className="page-item active" aria-current="page">

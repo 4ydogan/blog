@@ -12,28 +12,30 @@ const SinglePost = () => {
     useEffect(() => {
         setState({ loading: true });
         axios.get(`/post/${id}`).then(response => {
-            axios.get(`/authors/${response.data.author}`).then(author => setState({ post: response.data, author: author.data.author }))
+            axios.get(`/authors/${response.data.author_id}`)
+                .then(author => axios.get(`/categories/${response.data.category_id}`)
+                    .then(category => setState({ post: response.data, author: author.data.author, category: category.data.category }))
+                );
         })
         setState({ loading: false });
     }, [id])
 
-    
+
     const tags = () => {
         const tags = state.post.tags?.map(element => {
             return <a href="#" className="tag">{element}</a>
         });
     }
-    
+
     const Post = () => {
-        console.log(state.post);
-        return (state.post === undefined || state.author === undefined ? null :
+        return (state.post === undefined || state.category === undefined || state.author === undefined ? null :
             <>
                 <div className="post post-single">
                     <div className="post-header">
                         <h1 className="title mt-0 mb-3">{state.post.title}</h1>
                         <ul className="meta list-inline mb-0">
-                            <li className="list-inline-item"><a href={`/authors/${state.author.id}`}><img src={state.author.images} className="author" alt={state.author.name} />{state.author.name}</a></li>
-                            <li className="list-inline-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="list-inline-item"><a href={`/authors/${state.author.id}`}><img src={state.author.image} className="author" alt={state.author.name} />{state.author.name}</a></li>
+                            <li className="list-inline-item"><a href={`/categories/${state.post.category_id}`}>{state.category.name}</a></li>
                             <li className="list-inline-item">{state.post.date}</li>
                         </ul>
                     </div>
@@ -64,7 +66,7 @@ const SinglePost = () => {
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item"><a href={`/categories/${state.post.category}`}>{state.post.category}</a></li>
+                            <li className="breadcrumb-item"><a href={`/categories/${state.category.id}`}>{state.category.name}</a></li>
                             <li className="breadcrumb-item active" aria-current="page">{state.post.title}</li>
                         </ol>
                     </nav>
@@ -78,7 +80,7 @@ const SinglePost = () => {
 
                             <div className="about-author padding-30 rounded">
                                 <div className="thumb">
-                                    <img src={state.author.images} alt={state.author.name} />
+                                    <img src={state.author.image} alt={state.author.name} />
                                 </div>
                                 <div className="details">
                                     <h4 className="name"><a href={`/authors/${state.author.id}`}>{state.author.name}</a></h4>
