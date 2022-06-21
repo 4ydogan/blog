@@ -17,7 +17,9 @@ class Author extends Component {
               </div>
               <a href={`/authors/${authorContent.id}`}>
                 <div className="thumb rounded">
-                  <div className="inner data-bg-image" data-bg-image={authorContent.image}></div>
+                  <div className="inner data-bg-image" data-bg-image={authorContent.image} style={{
+                    backgroundImage: `url("${authorContent.image}")`
+                  }}></div>
                 </div>
               </a>
             </div>
