@@ -8,16 +8,16 @@ class Posts extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const posts = await axios.get(`/posts`);
-		const authors = await axios.get(`/authors`);
-		const categories = await axios.get(`/categories`)
-		this.setState({ posts: posts.data, authors: authors.data , categories: categories.data});
+		const posts = this.props.posts;
+		const authors = this.props.authors
+		const category = this.props.category;
+		this.setState({ posts: posts, authors: authors , category: category});
 		this.setState({ loading: false });
 	}
 
 	allPosts() {
 		let posts = this.state.posts?.map(content => {
-			return <Post key={content.id} content={content} authors={this.state.authors} categories={this.state.categories} />
+			return <Post key={content.id} content={content} authors={this.state.authors} category={this.state.category} />
 		});
 
 		return posts;

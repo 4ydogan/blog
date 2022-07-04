@@ -37,7 +37,7 @@ const SingleCategory = () => {
                     <div className="row gy-4">
 
                         <div className="col-lg-8">
-                            <Posts posts={state.posts} authors={state.authors} />
+                            <Posts posts={state.posts} authors={state.authors} category={state.category} />
                             <nav>
                                 <ul className="pagination justify-content-center">
                                     <li className="page-item active" aria-current="page">

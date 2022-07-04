@@ -7,7 +7,7 @@ class Post extends Component {
 
     const postContent =  this.props.content;
     const author = this.props.authors.find(t => t.id === this.props.content.author_id);
-    const category = this.props.categories.find(t => t.id === this.props.content.category_id);
+    const category = this.props.category;
 
     return (
       <>
