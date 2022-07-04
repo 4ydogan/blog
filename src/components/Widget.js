@@ -18,13 +18,9 @@ export default class Widget extends Component {
 
                     <Topics />                    
 
-                    <Newsletter />
-
-                    <Celebration />
 
                     <Advertisement />
 
-                    <TagClouds />
 
                 </div>
             </>
