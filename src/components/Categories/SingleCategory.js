@@ -14,7 +14,7 @@ const SingleCategory = () => {
     useEffect(() => {
         setState({ loading: true });
         axios.get(`/categories/${category_id}`).then(response => {
-            axios.get(`/authors/all`)
+            axios.get(`/authors/`)
                 .then(authors => setState({ category: response.data.category, posts: response.data.posts , authors: authors.data}))
         })
         setState({ loading: false });

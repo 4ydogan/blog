@@ -8,7 +8,7 @@ class Authors extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const response = await axios.get(`/authors/all`);
+		const response = await axios.get(`/authors`);
 		this.setState({ authors: response.data });
 		this.setState({ loading: false });
 	}

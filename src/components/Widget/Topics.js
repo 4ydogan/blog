@@ -7,7 +7,7 @@ class Topics extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const response = await axios.get(`/categories/all`);
+		const response = await axios.get(`/categories/`);
 		this.setState({ categories: response.data});
 		this.setState({ loading: false });
 	}

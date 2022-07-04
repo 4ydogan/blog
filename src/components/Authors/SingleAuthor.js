@@ -14,7 +14,7 @@ const SingleAuthor = () => {
     useEffect(() => {
         setState({ loading: true });
         axios.get(`/authors/${id}`).then(authors => {
-            axios.get(`/categories/all`)
+            axios.get(`/categories/`)
                 .then(categories => setState({ categories: categories.data, posts: authors.data.posts , author: authors.data.author}))
         })
         axios.get(`/authors/${id}`).then(authors => setState({ posts: authors.data.posts, author: authors.data.author }));

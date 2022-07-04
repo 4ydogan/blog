@@ -9,8 +9,8 @@ class Posts extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const posts = await axios.get(`/post/all`);
-		const authors = await axios.get(`/authors/all`);
+		const posts = await axios.get(`/posts`);
+		const authors = await axios.get(`/authors`);
 		this.setState({ posts: posts.data, authors: authors.data });
 		this.setState({ loading: false });
 	}

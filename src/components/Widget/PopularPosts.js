@@ -1,10 +1,16 @@
 import axios from 'axios';
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
 const PopularPosts = () => {
 
     const [contents, setContents] = useState();
+
+    useEffect(() => {
+        axios.get(`/popular/`).then(popular => setContents({ popularPosts: popular.data }));
+
+        axios.get(`/recent/`).then(recent => setContents({ recentPosts: recent.data }));
+    }, [])
 
     const post = (post) => {
         return (
@@ -28,13 +34,19 @@ const PopularPosts = () => {
 
     const posts = (type) => {
 
-        axios.get(`/posts/${type}`).then(response => {
-            setContents(response.data)
-        })
+        let posts;
 
-        let posts = contents?.map(content => {
-            return post(content);
-        });
+        if (type === "popular") {
+            posts = contents?.popularPosts?.map(content => {
+                return post(content);
+            });
+        }
+
+        else if (type === "recent") {
+            posts = contents?.recentPosts?.map(content => {
+                return post(content);
+            });
+        }
 
         return posts;
 
@@ -95,10 +107,10 @@ const PopularPosts = () => {
                 <div className="tab-content" id="postsTabContent">
                     <div className="lds-dual-ring"></div>
                     <div aria-labelledby="popular-tab" className={optionsSelect.popular.contentClassName} id="popular" role="tabpanel">
-                        {contents ? posts("popular") : null}
+                        { /* posts("popular") */}
                     </div>
                     <div aria-labelledby="recent-tab" className={optionsSelect.recent.contentClassName} id="recent" role="tabpanel">
-                        {contents ? posts("recent") : null}
+                        { /* posts("recent") */ }
                     </div>
                 </div>
             </div>

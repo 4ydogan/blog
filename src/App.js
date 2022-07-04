@@ -24,7 +24,6 @@ const App = () => {
     return <Navigate to="/" />;
   }
 
-
   const [canvas, setCanvas] = useState(false);
   const [search, setSearch] = useState(false);
 
