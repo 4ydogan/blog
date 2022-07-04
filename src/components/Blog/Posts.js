@@ -11,13 +11,14 @@ class Posts extends Component {
 		this.setState({ loading: true });
 		const posts = await axios.get(`/posts`);
 		const authors = await axios.get(`/authors`);
-		this.setState({ posts: posts.data, authors: authors.data });
+		const categories = await axios.get(`/categories`)
+		this.setState({ posts: posts.data, authors: authors.data , categories: categories.data});
 		this.setState({ loading: false });
 	}
 
 	allPosts() {
 		let posts = this.state.posts?.map(content => {
-			return <Post key={content.id} content={content} authors={this.state.authors} />
+			return <Post key={content.id} content={content} authors={this.state.authors} categories={this.state.categories} />
 		});
 
 		return posts;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import agent from '../../api/agent'
 
 class Post extends Component {
 
@@ -7,14 +6,15 @@ class Post extends Component {
   render() {
 
     const postContent =  this.props.content;
-    const author = this.props.authors?.find(t => t.id === this.props.content.author_id);
+    const author = this.props.authors.find(t => t.id === this.props.content.author_id);
+    const category = this.props.categories.find(t => t.id === this.props.content.category_id);
 
     return (
       <>
-        {postContent && author ? <div className="col-sm-6">
+        {postContent ? <div className="col-sm-6">
           <div className="post post-grid rounded bordered">
             <div className="thumb top-rounded">
-              <a href={`/categories/${postContent.category}`} className="category-badge position-absolute">{postContent.category}</a>
+              <a href={`/categories/${postContent.category_id}`} className="category-badge position-absolute">{category.name}</a>
               <a href={`/posts/${postContent.id}`}>
                 <div className="inner">
                   <img src={postContent.images} alt="post-title" />
