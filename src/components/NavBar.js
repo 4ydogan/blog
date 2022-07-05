@@ -1,13 +1,21 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const NavBar = (props) => {
+
+	const [state, setState] = useState();
+
+	useEffect(() => {
+		const logo = axios.get(`/images/logo`);
+		setState({logo: logo.data.image});
+	})
 
 	return (
 		<>
 			<header className="header-default">
 				<nav className="navbar navbar-expand-lg">
 					<div className="container-xl">
-						<a className="navbar-brand" href="index.html"><img src="public/logo.png" alt="logo" /></a>
+						<a className="navbar-brand" href="/"><img src={state.logo} alt="logo" /></a>
 
 						<div className="collapse navbar-collapse">
 							<ul className="navbar-nav mr-auto">

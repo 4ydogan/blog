@@ -5,22 +5,26 @@ import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-d
 const PopularPosts = () => {
 
     const [contents, setContents] = useState();
+    const [element, setElement] = useState();
 
     useEffect(() => {
         axios.get(`/popular/`).then(popular => setContents({ popularPosts: popular.data }));
 
         axios.get(`/recent/`).then(recent => setContents({ recentPosts: recent.data }));
+
+        posts();
+
     }, [])
 
     const post = (post) => {
         return (
             <div className="post post-list-sm circle">
                 <div className="thumb circle">
-                    <Navigate to={`/posts/${post.id}`}>
+                    <a href={`/posts/${post.id}`}>
                         <div className="inner">
-                            <img src={post.img} alt={post.title} />
+                            <img src={post.images} alt={post.title} />
                         </div>
-                    </Navigate>
+                    </a>
                 </div>
                 <div className="details clearfix">
                     <h6 className="post-title my-0"><a href={`/posts/${post.id}`}>{post.title}</a></h6>
@@ -32,25 +36,18 @@ const PopularPosts = () => {
         )
     }
 
-    const posts = (type) => {
+    const posts = () => {
 
-        let posts;
-
-        if (type === "popular") {
-            posts = contents?.popularPosts?.map(content => {
-                return post(content);
-            });
-        }
-
-        else if (type === "recent") {
-            posts = contents?.recentPosts?.map(content => {
-                return post(content);
-            });
-        }
-
-        return posts;
-
+        const popularPosts = contents?.popularPosts?.map(content => {
+            return post(content);
+        });
+        
+        const recentPosts = contents?.recentPosts?.map(content => {
+            return post(content);
+        });
+        setElement({ popular: popularPosts, recent: recentPosts })
     }
+
 
     const [optionsSelect, setOptionSelect] = useState({
         popular: {
@@ -99,21 +96,21 @@ const PopularPosts = () => {
 
     return (
         <>
-            <div className="post-tabs rounded bordered">
+            {element ? <div className="post-tabs rounded bordered">
                 <ul className="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
-                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("popular")} aria-controls="popular" aria-selected={optionsSelect.popular} className={optionsSelect.popular.className} data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
-                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("recent")} aria-controls="recent" aria-selected={optionsSelect.recent} className={optionsSelect.recent.className} data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
+                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("popular")} aria-controls="popular" aria-selected={optionsSelect.popular.ariaSelected} className={optionsSelect.popular.className} data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
+                    <li className="nav-item" role="presentation"><button onClick={() => handleClick("recent")} aria-controls="recent" aria-selected={optionsSelect.recent.ariaSelected} className={optionsSelect.recent.className} data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
                 </ul>
                 <div className="tab-content" id="postsTabContent">
                     <div className="lds-dual-ring"></div>
                     <div aria-labelledby="popular-tab" className={optionsSelect.popular.contentClassName} id="popular" role="tabpanel">
-                        { /* posts("popular") */}
+                        {element?.popular}
                     </div>
                     <div aria-labelledby="recent-tab" className={optionsSelect.recent.contentClassName} id="recent" role="tabpanel">
-                        { /* posts("recent") */ }
+                        {element?.recent}
                     </div>
                 </div>
-            </div>
+            </div> : null}
         </>
     )
 }
