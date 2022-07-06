@@ -100,7 +100,7 @@ const SinglePost = () => {
 
                             <div className="section-header">
                                 <h3 className="section-title">Comments (3)</h3>
-                                <img src="images/wave.svg" className="wave" alt="wave" />
+                                <img src="https://katen-template.netlify.app/html/https://katen-template.netlify.app/html/images/wave.svg" className="wave" alt="wave" />
                             </div>
                             <div className="comments bordered padding-30 rounded">
 
@@ -145,7 +145,7 @@ const SinglePost = () => {
 
                             <div className="section-header">
                                 <h3 className="section-title">Leave Comment</h3>
-                                <img src="images/wave.svg" className="wave" alt="wave" />
+                                <img src="https://katen-template.netlify.app/html/images/wave.svg" className="wave" alt="wave" />
                             </div>
                             <div className="comment-form rounded bordered padding-30">
 

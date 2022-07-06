@@ -12,7 +12,7 @@ const Newsletter = () => {
             <div className="widget rounded">
                 <div className="widget-header text-center">
                     <h3 className="widget-title">Newsletter</h3>
-                    <img src="images/wave.svg" className="wave" alt="wave" />
+                    <img src="https://katen-template.netlify.app/html/images/wave.svg" className="wave" alt="wave" />
                 </div>
                 <div className="widget-content">
                     <span className="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
