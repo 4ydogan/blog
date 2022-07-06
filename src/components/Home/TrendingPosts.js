@@ -9,7 +9,7 @@ class LatestPosts extends Component {
 
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const response = await axios.get(`/recent/`);
+		const response = await axios.get(`/popular/`);
 		const categories = await axios.get(`categories/`);
 		const authors = await axios.get(`authors/`);
 		this.setState({ posts: response.data, categories: categories.data, authors: authors.data });
@@ -61,7 +61,7 @@ class LatestPosts extends Component {
 		return (
 			<>
 				<div className="section-header">
-					<h3 className="section-title">Latest Posts</h3>
+					<h3 className="section-title">Trending Posts</h3>
 					<img src="https://katen-template.netlify.app/html/images/wave.svg" className="wave" alt="wave" />
 				</div>
 

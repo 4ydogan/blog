@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FeaturePosts from './Home/FeaturePosts';
-import Trending from './Home/Trending';
+import TrendingPosts from './Home/TrendingPosts';
 import LatestPosts from './Home/LatestPosts';
 import Widget from './Widget';
 
@@ -15,7 +15,7 @@ class HomePage extends Component {
                                 <FeaturePosts />
 
                                 <br />
-                                <Trending />
+                                <TrendingPosts />
 
                                 <br />
 
