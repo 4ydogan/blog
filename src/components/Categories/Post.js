@@ -23,7 +23,7 @@ class Post extends Component {
             </div>
             <div className="details">
               <ul className="meta list-inline mb-0">
-                <li className="list-inline-item"><a href={postContent.author_id}><img src={author.image} className="author" alt={author.name} />{author.name}</a></li>
+                <li className="list-inline-item"><a href={`/authors/${postContent.author_id}`}><img src={author.image} className="author" alt={author.name} />{author.name}</a></li>
                 <li className="list-inline-item">{postContent.date}</li>
               </ul>
               <h5 className="post-title mb-3 mt-3"><a href={`/posts/${postContent.id}`}>{postContent.title}</a></h5>
